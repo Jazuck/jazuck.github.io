@@ -1,18 +1,118 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="http://www.w3schools.com/action_page.php">
-        <input type="tel" name="telefono" id="">
-        <input type="email" name="email">
-        <input type="password" name="contraseña">
-        <input type="number" name="numero">
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Formulario</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <form action="https://www.w3schools.com/action_page.php" method="POST">
+            <fieldset>
+                <legend>Datos Usuario</legend>
+                <div class="fila">
+                    <div class="campo">
+                        <label for="Nombre usuario">Nombre de usuario</label>
+                        <input type="text" id="Nombre usuario" name="Nombre usuario" placeholder="Nombre usuario" required pattern=".{3,}">
+                    </div>
+                    <div class="campo">
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" name="password" placeholder="Introduce Contraseña" required pattern=".{6,}">  
+                        <div class="mostrar-password">
+                            <input type="checkbox" id="show-password" onclick="togglePassword()">
+                            <label for="mostrar-contrasenia">Mostrar Contraseña</label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Datos Personales</legend>
+                <div class="fila">
+                    <div class="campo">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Nombre" required pattern=".{3,}">
+                    </div>
+                    <div class="campo">
+                        <label for="apellidos">Apellidos</label>
+                        <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos" required pattern=".{3,}">
+                    </div>
+                </div>
+                <div class="fila">
+                    <div class="campo">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="Ejem: (+34)922123123" required pattern="\d{9,12}">
+                    </div>
+                    <div class="campo">
+                        <label for="cp">Códido postal</label>
+                        <input type="text" id="cp" name="cp" placeholder="Ejem: 38132">
+                    </div>
+                </div>
+                <div class="fila">
+                    <div class="campo">
+                        <label for="dni">DNI/NIE</label>
+                        <input type="text" id="dni" name="dni" placeholder="DNI / NIE" required pattern="\d{8}[A-Z]">
+                    </div>
+                    <div>
+                        <label for="tipo_cuenta">Crear cuenta como</label>
+                        <div>
+                            <input type="radio" id="particular" name="tipo_cuenta" value="particular" required>
+                            <label for="particular">Particular</label>
+                            <input type="radio" id="empresa" name="tipo_cuenta" value="empresa" required>
+                            <label for="empresa">Empresa</label>
+                        </div>
+                    </div>
+                    <div class="campo">
+                        <label for="anio_nacimiento">Año de Nacimiento</label>
+                        <select name="anio_nacimiento" id="anio_nacimiento" required>
+                            <option value="">Seleccione</option>
+                        </select>
+                    </div>
+                </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Elige tus aficiones</legend>
+                    <div class="fila-aficiones">
+                        <div>
+                            <input type="checkbox" id="musica" name="aficiones" value="musica">
+                            <label for="musica">Música</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="deporte" name="aficiones" value="deporte">
+                            <label for="deporte">Deporte</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="videojuegos" name="aficiones" value="videojuegos">
+                            <label for="videojuegos">Videojuegos</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="manualidades" name="aficiones" value="manualidades">
+                            <label for="manualidades">Manualidades</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Artes" name="aficiones" value="Artes">
+                            <label for="Artes">Artes</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Lectura" name="aficiones" value="Lectura">
+                            <label for="Lectura">Lectura</label>
+                        </div>
+                    </div>
+            </fieldset>
+            <fieldset>
+                <legend>Datos Publicación</legend>
+                <div class="campo">
+                    <label for="titulo">Título</label>
+                    <input type="text" id="titulo" name="titulo" placeholder="Título" required pattern=".{1,15}">
+                </div>
+                <div class="campo">
+                    <label for="descripcion">Descripción</label>
+                    <textarea id="descripcion" name="descripcion" placeholder="Descripción" required maxlength="120"></textarea>
+                </div>
+            </fieldset>
 
-        <button type="submit">confirmar</button>
-    </form>  
-</body>
+            <button type="submit">Enviar</button>
+        </form>
+        <script src="script.js"></script>
+    </body>
 </html>
