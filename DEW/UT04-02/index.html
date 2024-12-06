@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Formulario</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="contenedor">
+            <div id="parteIzquierda">
+                <form id="frm" action="https://www.w3schools.com/action_page.php" method="POST" novalidate>
+                        <legend>Datos Usuario</legend>
+                        <div class="fila">
+                            <div class="campo">
+                                <label for="NombreUsuario">Nombre de usuario</label>
+                                <input type="text" id="NombreUsuario" name="NombreUsuario" placeholder="Nombre usuario" required pattern=".{3,}">
+                            </div>
+                            <div class="campo">
+                                <label for="Contrasena">Contraseña</label>
+                                <input type="password" id="Contrasena" name="Contrasena" placeholder="Introduce Contraseña" required pattern=".{8,}">
+                                <div class="MostrarContrasena">
+                                    <input type="checkbox" id="MostrarContrasena">
+                                    <label for="MostrarContrasena">Mostrar Contraseña</label>
+                                </div>
+                            </div>
+                        </div>
+                        <legend>Datos Personales</legend>
+                        <div class="fila">
+                            <div class="campo">
+                                <label for="Nombre">Nombre</label>
+                                <input type="text" id="Nombre" name="Nombre" placeholder="Nombre" required pattern=".{3,}">
+                            </div>
+                            <div class="campo">
+                                <label for="Apellidos">Apellidos</label>
+                                <input type="text" id="Apellidos" name="Apellidos" placeholder="Apellidos" required pattern=".{3,}">
+                            </div>
+                        </div>
+                        <div class="fila">
+                            <div class="campo">
+                                <label for="Telefono">Teléfono</label>
+                                <input type="tel" id="Telefono" name="Telefono" placeholder="Ejem: (+34)922123123" required pattern="^\(\+34\)\d{9}$">
+                            </div>
+                            <div class="campo">
+                                <label for="CodigoPostal">Códido postal</label>
+                                <input type="text" id="CodigoPostal" name="CodigoPostal" placeholder="Ejem: 38132" required pattern="^38\d{3}$">
+                            </div>
+                        </div>
+                        <div class="fila">
+                            <div class="campo">
+                                <label for="TipoDocumento">Tipo de documento</label>
+                                <div class="dni">
+                                    <select name="TipoDocumento" id="TipoDocumento" required>
+                                        <option value="">---</option>
+                                        <option value="DNI">DNI</option>
+                                        <option value="NIE">NIE</option>
+                                    </select>
+                                    <input type="text" id="DniNie" name="DniNie" placeholder="DNI / NIE" required pattern="\d{8}[A-Z]">
+                                </div>                
+                            </div>
+                            <div class="campo">
+                                <label for="CuentaComo">Cuenta como</label>
+                                <div>
+                                    <input type="radio" id="particular" name="CuentaComo" value="particular" required>
+                                    <label for="particular">Particular</label>
+                                    <input type="radio" id="empresa" name="CuentaComo" value="empresa" required>
+                                    <label for="empresa">Empresa</label>
+                                </div>
+                            </div>
+                            <div class="campo">
+                                <label for="AnioNacimiento">Año de Nacimiento</label>
+                                <select name="AnioNacimiento" id="AnioNacimiento" required>
+                                    <option value="">Seleccione</option>
+                                </select>
+                            </div>
+                        </div>
+                        <legend>Elige tus aficiones</legend>
+                            <div class="FilaAficiones">
+                                <div>
+                                    <input type="checkbox" id="musica" class="AficionesCheckbox" value="MU" onchange="actualizarAficiones()">
+                                    <label for="musica">Música</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="deporte" class="AficionesCheckbox" value="DE" onchange="actualizarAficiones()">
+                                    <label for="deporte">Deporte</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="videojuegos" class="AficionesCheckbox" value="VI" onchange="actualizarAficiones()">
+                                    <label for="videojuegos">Videojuegos</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="manualidades" class="AficionesCheckbox" value="MA" onchange="actualizarAficiones()">
+                                    <label for="manualidades">Manualidades</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="Artes" class="AficionesCheckbox" value="AR" onchange="actualizarAficiones()">
+                                    <label for="Artes">Artes</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="Lectura" class="AficionesCheckbox" value="LE" onchange="actualizarAficiones()">
+                                    <label for="Lectura">Lectura</label>
+                                </div>
+                                <input type="hidden" id="Aficiones" name="Aficiones">
+                                <div class="ErrorMsg"></div>
+                            </div>
+                        <legend>Datos Publicación</legend>
+                        <div class="campo">
+                            <label for="PublicacionTitulo">Título</label>
+                            <input type="text" id="PublicacionTitulo" name="PublicacionTitulo" placeholder="Título" required minlength="4" maxlength="15">
+                            <div class="contador" id="TituloContador">0/15</div>
+                            <div class="ErrorMsg"></div>
+                        </div>
+             
+                        <div class="campo">
+                            <label for="PublicacionDescripcion">Descripción</label>
+                            <textarea id="PublicacionDescripcion" name="PublicacionDescripcion" placeholder="Descripción" required minlength="4" maxlength="120"></textarea>
+                            <div class="contador" id="DescripcionContador">0/120</div>
+                            <div class="ErrorMsg"></div>
+                        </div>
+                    <button id="btn" type="button">Enviar</button>
+                </form>
+            </div>
+            <div id="parteDerecha">
+                <h2>Mensajes de Validación</h2>
+                <div id="mensajes"></div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
